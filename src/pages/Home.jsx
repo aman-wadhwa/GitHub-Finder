@@ -2,9 +2,13 @@
 function Home() {
   return (
     <div>
-      home
+      <div className="text-6xl">
+        Welcome
+      </div>
     </div>
   )
 }
+
+
 
 export default Home
