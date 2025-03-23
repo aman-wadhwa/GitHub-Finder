@@ -1,0 +1,23 @@
+[33mcommit 7c28c4d7e7c4338eedec8da450f023a017ed0ecf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Aman Wadhwa <amanwadhwa0707@gmail.com>
+Date:   Sat Mar 22 20:27:55 2025 +0530
+
+    Added userresults component
+
+[33mcommit d21924d6f2ec91e1d7b6ef8c911e8a7e7ac78423[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Aman Wadhwa <amanwadhwa0707@gmail.com>
+Date:   Thu Mar 20 18:29:42 2025 +0530
+
+    404page
+
+[33mcommit a33273f26154391e49713575dd132ff790d92162[m[33m ([m[1;32m=M[m[33m)[m
+Author: Aman Wadhwa <amanwadhwa0707@gmail.com>
+Date:   Thu Mar 20 18:07:30 2025 +0530
+
+    adding basic components and pages
+
+[33mcommit 76a7426a4e764fb23534f90da8e589796d42a314[m
+Author: Aman Wadhwa <amanwadhwa0707@gmail.com>
+Date:   Thu Mar 20 14:42:40 2025 +0530
+
+    Initialize project using Create React App
