@@ -1,16 +1,19 @@
 import { useState , useContext} from "react"
 import GithubContext from '../../context/github/GithubContext'
+import AlertContext from "../../context/alert/AlertContext";
+import Alert from "../layout/Alert";
 
 function UserSearch() {
   const {users, searchUsers, clearUsers} = useContext(GithubContext)
   const [text,settext] = useState('');
 
+  const {setAlert} = useContext(AlertContext)
   const handleChange = (evt) => settext(evt.target.value);
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
     if(text===''){
-      alert('value is empty')
+      setAlert('Field cannot be empty', 'error')
     }
     else{
       searchUsers(text)
@@ -20,6 +23,8 @@ function UserSearch() {
 
 
   return (
+    <>
+    <Alert/>
     <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md-grid-cols-2 mb-8 gap-8">
       <div>
         <form onSubmit={handleSubmit}>
@@ -40,6 +45,7 @@ function UserSearch() {
       )}
       
     </div>
+    </>
   )
 }
 
