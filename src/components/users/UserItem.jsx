@@ -1,6 +1,7 @@
 
 
 function UserItem({user : {login , avatar_url}}) {
+  
   return (
     <div className="flex items-center p-4 bg-purple shadow-md rounded-lg space-x-4 hover:shadow-lg transition-shadow">
         <div className="avatar">
