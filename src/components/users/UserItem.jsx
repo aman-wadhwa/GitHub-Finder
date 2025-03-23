@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 
 function UserItem({user : {login , avatar_url}}) {
   
@@ -11,8 +11,8 @@ function UserItem({user : {login , avatar_url}}) {
         </div>
         <div className="text-lg font-semibold text-gray-800">
             {login}
-            
         </div>
+        <Link className='text-base-content text-opacity-40' to={`/users/${login}`}>Visit Profile</Link>
     </div>
   )
 }
