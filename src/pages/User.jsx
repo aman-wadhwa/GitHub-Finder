@@ -5,17 +5,26 @@ import Loading from "../components/layout/Loading"
 import {FaCodepen, FaStore, FaUserFriends, FaUsers} from 'react-icons/fa'
 import { Link } from "react-router-dom"
 import RepoList from "../components/repos/RepoList"
+import { getUser, getUserRepos } from "../context/github/GithubActions"
 
 
 function User() {
-    const {getUser, user, userloading, getUserRepos, repos} = useContext(GithubContext)
+    const {user, userloading, repos, dispatch} = useContext(GithubContext)
 
     const params = useParams();
 
     useEffect(()=>{
-        getUser(params.login)
-        getUserRepos(params.login)
-    }, [])
+        dispatch({type:'SET_LOADING'})
+        dispatch({type:'SET_USERLOADING'})
+        const getUserData = async() =>{
+            const userdata = await getUser(params.login)
+            dispatch({type:'GET_USER', payload:userdata})
+
+            const userrepos = await getUserRepos(params.login)
+            dispatch({type:'GET_REPOS', payload:userrepos})
+        }
+        getUserData()
+    }, [params.login, dispatch])
 
     const {
         name,
@@ -56,7 +65,7 @@ function User() {
                             </h2>
                             <p>{login}</p>
                             <p>{email}</p>
-                        </div>
+                        </div>  
                     </div>
                 </div>
                 <div className="col-span-2">

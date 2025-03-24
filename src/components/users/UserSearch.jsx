@@ -2,21 +2,24 @@ import { useState , useContext} from "react"
 import GithubContext from '../../context/github/GithubContext'
 import AlertContext from "../../context/alert/AlertContext";
 import Alert from "../layout/Alert";
+import { searchUsers} from "../../context/github/GithubActions";
 
 function UserSearch() {
-  const {users, searchUsers, clearUsers} = useContext(GithubContext)
+  const {users,  dispatch} = useContext(GithubContext)
   const [text,settext] = useState('');
 
-  const {setAlert} = useContext(AlertContext)
-  const handleChange = (evt) => settext(evt.target.value);
+  const {setAlert} = useContext(AlertContext) 
+  const handleChange = (evt) => settext(evt.target.value)
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault()
     if(text===''){
       setAlert('Field cannot be empty', 'error')
     }
     else{
-      searchUsers(text)
+      dispatch({type:'SET_LOADING'})
+      const items = await searchUsers(text)
+      dispatch({type:'GET_USERS', payload:items})
       settext('')
     }
   }
@@ -40,7 +43,7 @@ function UserSearch() {
       </div>
       {users.length>0 && (
         <div>
-        <button className="btn btn-ghost btn-lg" onClick={clearUsers}>Clear</button>
+        <button className="btn btn-ghost btn-lg" onClick={()=> dispatch({type:'CLEAR_USERS'})}>Clear</button>
       </div>
       )}
       
